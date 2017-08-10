@@ -1,0 +1,6 @@
+framework module Pods_XMessage {
+  umbrella header "Pods-XMessage-umbrella.h"
+
+  export *
+  module * { export * }
+}
