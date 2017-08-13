@@ -174,6 +174,7 @@ class LoginViewController: UIViewController {
             self.view.endEditing(true)
             
             let destinVC = ChannelListViewController()
+            destinVC.senderDisplayName = Auth.auth().currentUser?.displayName
             UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: destinVC)
             self.dismiss(animated: true, completion: nil)
         }
@@ -253,8 +254,8 @@ extension LoginViewController: FBSDKLoginButtonDelegate {
                 
                 return
             }
-            let destinVC = TopViewController()
-            destinVC.info = Auth.auth().currentUser?.displayName
+            let destinVC = ChannelListViewController()
+            destinVC.senderDisplayName = Auth.auth().currentUser?.displayName
             UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: destinVC)
             self.dismiss(animated: true, completion: nil)
             
@@ -291,8 +292,8 @@ extension LoginViewController: GIDSignInDelegate, GIDSignInUIDelegate {
                 
                 return
             }
-            let destinVC = TopViewController()
-            destinVC.info = Auth.auth().currentUser?.displayName
+            let destinVC = ChannelListViewController()
+            destinVC.senderDisplayName = Auth.auth().currentUser?.displayName
             UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: destinVC)
             self.dismiss(animated: true, completion: nil)
             

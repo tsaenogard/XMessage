@@ -45,7 +45,6 @@ class ChannelListViewController: UITableViewController {
         let logoutBtn = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(onLogout(_:)))
         self.navigationItem.rightBarButtonItem = logoutBtn
         
-        senderDisplayName = Auth.auth().currentUser?.displayName
     }
     
     deinit {
@@ -78,15 +77,18 @@ class ChannelListViewController: UITableViewController {
     }
     
     func onLogout(_ sender: UIBarButtonItem)  {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            let destinVC = LoginViewController()
-            UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: destinVC)
-            self.dismiss(animated: true, completion: nil)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
+        let destinVC = ProfileViewController()
+        destinVC.view.backgroundColor = UIColor.clear
+        self.present(destinVC, animated: true, completion: nil)
+//        let firebaseAuth = Auth.auth()
+//        do {
+//            try firebaseAuth.signOut()
+//            let destinVC = LoginViewController()
+//            UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: destinVC)
+//            self.dismiss(animated: true, completion: nil)
+//        } catch let signOutError as NSError {
+//            print ("Error signing out: %@", signOutError)
+//        }
     }
     
     
